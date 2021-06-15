@@ -11,7 +11,14 @@ const taskSchema = new mongoose.Schema({
         type: Boolean,
         // require: false, - Da na mesma de não ter
         default: 0 //1 - true, 0 - false
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
+}, {
+    timestamps: true
 })
 
 taskSchema.pre('save', async function (next) {
